@@ -8,22 +8,30 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/weekday")
 public class WeekdayController {
-    private enum Weekday {
-       MONDAY("Понедельник"),
+
+    @GetMapping("/{day}")
+    public String getWeekday(@PathVariable String day) {
+        WeekDay weekDay = WeekDay.valueOf(day.toUpperCase());
+        return weekDay.getRussianName();
+    }
+
+    private enum WeekDay {
+        MONDAY("Понедельник"),
         TUESDAY("Вторник"),
         WEDNESDAY("Среда"),
-        THUESDAY("Четверг"),
+        THURSDAY("Четверг"),
         FRIDAY("Пятница"),
         SATURDAY("Суббота"),
         SUNDAY("Воскресенье");
 
-       private final String russianName;
-       WeekDay(String russianName) {
-           this.russianName = russianName;
-       }
+        private final String russianName;
 
-       public String getRussianName() {
-           return russianName;
-       }
+        WeekDay(String russianName) {
+            this.russianName = russianName;
+        }
+
+        public String getRussianName() {
+            return russianName;
+        }
     }
 }
