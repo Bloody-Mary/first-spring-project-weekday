@@ -12,7 +12,7 @@ public class WeekdayController {
     @GetMapping("/{day}")
     public String getWeekday(@PathVariable String day) {
         WeekDay weekDay = WeekDay.valueOf(day.toUpperCase());
-        return "Сегодня " + weekDay.getRussianName();
+        return "Сегодня " + weekDay.getRussianName() + "!";
     }
 
     private enum WeekDay {
